@@ -1,0 +1,25 @@
+# HTCondor submit description file
+# Everything with a leading # is a comment
+
+universe                = vanilla
+initialdir              = /nethome/ajdsouza/vllm_server
+executable              = init_server.sh
+# arguments               = 3275 127.0.0.1 test_ferry
+#output                  = /scratch/kstein/apb_costumes/logs/ferry_test/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).out
+outputs			= /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).out
+error                   = /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).err
+log                     = /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).log
+request_CPUs            = 16
+request_memory          = 150G
+request_GPUs            = 1
+requirements            = (GPUs_GlobalMemoryMb >= 20000) && (TARGET.UidDomain == "coli.uni-saarland.de") && (TARGET.Machine != "hopper-3.coli.uni-saarland.de")
+
+getenv                  = True
++WantGPUHomeMounted     = true
+
+queue 1
+
+# go to docker hub and get your docker image or else build from scratch:
+# https://hub.docker.com/r/huggingface/transformers-pytorch-gpu
+
+ 
