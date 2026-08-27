@@ -3,14 +3,14 @@
 
 universe                = vanilla
 initialdir              = /nethome/ajdsouza/vllm_server
-executable              = init_server.sh
-outputs			              = /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).out
+executable              = start_vllm.sh
+output	                = /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).out
 error                   = /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).err
 log                     = /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).log
 request_CPUs            = 16
 request_memory          = 150G
 request_GPUs            = 1
-requirements            = (GPUs_GlobalMemoryMb >= 20000) && (TARGET.UidDomain == "coli.uni-saarland.de") && (TARGET.Machine != "hopper-3.coli.uni-saarland.de")
+requirements            = (GPUs_GlobalMemoryMb >= 50000) && (TARGET.UidDomain == "coli.uni-saarland.de")
 
 getenv                  = True
 +WantGPUHomeMounted     = true
