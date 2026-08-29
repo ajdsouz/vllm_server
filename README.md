@@ -39,3 +39,21 @@ For ease of use, I have created a script that will generate submit files from a 
     ```
 
 6. Create a tunnel between your local device and the remote server
+
+    a. Find the node the job is running on
+
+    ```bash
+    condor_q -run [jobid]
+    ```
+
+    b. Create tunnel between compute node to your device
+
+    ```bash
+    ssh -L 8000:EXECUTE_MACHINE:8000 [username]@login.lst.uni-saarland.de
+    ```
+
+    c. Test connection to node
+
+    ```bash
+    curl http://localhost:8000/v1
+    ```
