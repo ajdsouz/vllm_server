@@ -45,6 +45,9 @@ if __name__=="__main__":
     tiny_gpu = template_40gb.replace('USERNAME', username)
     big_gpu = template_80gb.replace('USERNAME', username)
 
+    #creating log dir in /scratch
+    os.makedirs(f"/scratch/{username}/vllm_server", exist_ok=True)
+    
     tiny_sub = os.path.join("src/vllm_server/submit_files", f"{username}_submit_2x40gb.sub")
     big_sub = os.path.join("src/vllm_server/submit_files", f"{username}_submit_80gb.sub")
 
