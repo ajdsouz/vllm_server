@@ -1,6 +1,6 @@
 import os
 
-template_40gb = """"#vllm server submit script for V100 32GB / A100 40GB GPUs (tony-1/2/4)
+template_40gb = """#vllm server submit script for V100 32GB / A100 40GB GPUs (tony-1/2/4)
 universe                = vanilla
 initialdir              = /nethome/USERNAME/vllm_server
 executable              = src/vllm_server/start_vllm/start_vllm_2x40gb.sh
@@ -10,7 +10,7 @@ log                     = /scratch/USERNAME/vllm_server/run.sh.$(ClusterId).$(Ye
 request_CPUs            = 16
 request_memory          = 150G
 request_GPUs            = 2
-requirements            = (GPUs_GlobalMemoryMb >= 32000) && (TARGET.UidDomain == "coli.uni-saarland.de") && (TARGET.Machine != "tony-3.coli.uni-saarland.de") # as of 29/08/2026, tony-3 has nccl bugs preventing inter gpu comms
+requirements            = (GPUs_GlobalMemoryMb >= 32000) && (TARGET.UidDomain == "coli.uni-saarland.de") && (TARGET.Machine != "tony-3.coli.uni-saarland.de")
  
 getenv                  = True
 +WantGPUHomeMounted     = true
@@ -18,7 +18,7 @@ getenv                  = True
 queue 1
 """
 
-template_80gb = """"#vllm server submit script for A100 80GB / H100 80GB GPUs (tony-3 & hopper-1/2/3)
+template_80gb = """#vllm server submit script for A100 80GB / H100 80GB GPUs (tony-3 & hopper-1/2/3)
 universe                = vanilla
 initialdir              = /nethome/USERNAME/vllm_server
 executable              = src/vllm_server/start_vllm/start_vllm_80gb.sh

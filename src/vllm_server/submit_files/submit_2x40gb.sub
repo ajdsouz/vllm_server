@@ -17,7 +17,6 @@ getenv                  = True
 
 queue 1
 
-# go to docker hub and get your docker image or else build from scratch:
-# https://hub.docker.com/r/huggingface/transformers-pytorch-gpu
+
 
  
