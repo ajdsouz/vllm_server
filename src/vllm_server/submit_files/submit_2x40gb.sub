@@ -3,15 +3,15 @@
 
 universe                = vanilla
 initialdir              = /nethome/ajdsouza/vllm_server
-executable              = start_vllm.sh
+executable              = start_vllm/start_vllm_80gb.sh
 output	                = /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).out
 error                   = /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).err
 log                     = /scratch/ajdsouza/vllm_server/run.sh.$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).log
 request_CPUs            = 16
 request_memory          = 150G
-request_GPUs            = 1
-requirements            = (GPUs_GlobalMemoryMb >= 50000) && (TARGET.UidDomain == "coli.uni-saarland.de")
-
+request_GPUs            = 2
+requirements            = (GPUs_GlobalMemoryMb >= 32000) && (TARGET.UidDomain == "coli.uni-saarland.de") && (TARGET.Machine != "tony-3.coli.uni-saarland.de") # as of 29/08/2026, tony-3 has nccl bugs preventing inter gpu comms
+ 
 getenv                  = True
 +WantGPUHomeMounted     = true
 
